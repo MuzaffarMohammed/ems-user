@@ -1,0 +1,26 @@
+spring:
+  application: 
+    name: EMS-USER
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/ems_user
+    username: root
+    password: root
+    driver-class-name: "com.mysql.jdbc.Driver"
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: validate
+server:
+  port: ${PORT:0}
+  
+eureka:
+  instance:
+    hostname: ${EUREKA.INSTANCE.ADDRESS:localhost}
+    port: ${PORT:4340}
+    http-protocol: ${EUREKA.INSTANCE.HTTP.PROTOCOL:http}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: ${eureka.instance.http-protocol}://${eureka.instance.hostname}:${eureka.instance.port}/eureka/        
